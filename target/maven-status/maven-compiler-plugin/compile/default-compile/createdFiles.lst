@@ -1,0 +1,12 @@
+com\chandan\biolemmatizer\BioLemmatizer.class
+com\chandan\spring\SpringBootRestApplication.class
+com\chandan\biolemmatizer\LemmataEntry$Lemma.class
+com\chandan\biolemmatizer\BioLemmatizerCmdOpts.class
+com\chandan\biolemmatizer\POSEntry.class
+com\chandan\biolemmatizer\Americanize.class
+com\chandan\spring\Lemata.class
+com\chandan\spring\Person.class
+com\chandan\biolemmatizer\BioWordLexicon.class
+com\chandan\biolemmatizer\LemmataEntry.class
+com\chandan\spring\PersonController.class
+com\chandan\biolemmatizer\MorphAdornerLemmatizer.class
