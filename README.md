@@ -1,4 +1,8 @@
-# How to run
+# Import project into eclipse
+  - git clone https://github.com/ChandanKar/BioLemmatizer-REST.git
+  - mvn eclipse:eclipse
+
+# development run
   - git clone https://github.com/ChandanKar/BioLemmatizer-REST.git
   - mvn clean
   - mvn spring-boot:run
