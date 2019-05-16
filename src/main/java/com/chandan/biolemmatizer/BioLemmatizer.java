@@ -960,7 +960,7 @@ public class BioLemmatizer {
 		System.out.println("=========================================================");
 	}
 	
-	public String getPrecessedData(String inputStr1, String inputStrPos1){
+	public String getPrecessedData(String inputStr1, String inputStrPos1, boolean useInteractiveMode){
 
 		String lemataStr = null;
 		BioLemmatizerCmdOpts options = new BioLemmatizerCmdOpts();
@@ -977,7 +977,7 @@ public class BioLemmatizer {
 		BioLemmatizer bioLemmatizer = new BioLemmatizer(lexiconFile);
 		boolean americanize = options.americanizedLemma();
 		boolean outputLemmaOnly = options.outputLemmaOnly();
-		boolean useInteractiveMode = options.useInteractiveMode();
+		//boolean useInteractiveMode = options.useInteractiveMode();
 		String inputStr = inputStr1;
 		//String inputStr = options.getInputStr();
 		if (inputStr != null)
@@ -992,7 +992,8 @@ public class BioLemmatizer {
 		System.out.println("Running BioLemmatizer....");
 		try {
 			if (useInteractiveMode) {
-				runInteractiveMode(bioLemmatizer, outputLemmaOnly, americanize);
+				//runInteractiveMode(bioLemmatizer, outputLemmaOnly, americanize);
+				lemataStr = runInteractiveModeRest(bioLemmatizer, outputLemmaOnly, americanize, inputStr);
 			} else if (inputStr != null) {
 				LemmataEntry lemmata;
 				if(americanize) {
@@ -1122,6 +1123,33 @@ public class BioLemmatizer {
 				System.out.println(lemmata);
 			}
 		}
+	}
+	
+	//TODO: run interactive mode
+	private static String runInteractiveModeRest(BioLemmatizer bioLemmatizer, boolean outputLemmaOnly, boolean americanize, String inputStr) throws IOException {
+		Americanize convert = null;
+		if(americanize) 
+			convert = new Americanize();
+		String outputString = null;
+		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+		String input;
+		System.out
+				.println("Running BioLemmatizer in interactive mode. Please type a word to be lemmatized with an optional part-of-speech, e.g. \"run\" or \"run NN\"");
+		
+			LemmataEntry lemmata; 
+			if(americanize) 
+			    lemmata = bioLemmatizer.lemmatizeByLexiconAndRules(convert.americanize(unicodeHandler(inputStr)), "");
+			else
+				lemmata = bioLemmatizer.lemmatizeByLexiconAndRules(unicodeHandler(inputStr), "");
+			if (outputLemmaOnly) {
+				System.out.println(lemmata.lemmasToString());
+			} else {
+				System.out.println(lemmata);
+			}
+			
+			outputString = lemmata.lemmasToString();
+		
+		return outputString;
 	}
 }
 

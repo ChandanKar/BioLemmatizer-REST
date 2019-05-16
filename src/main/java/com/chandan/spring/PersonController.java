@@ -42,7 +42,17 @@ public class PersonController {
 	@RequestMapping("/bio/lemmatizer")
 	public Lemata getBioLemmatizer(@RequestParam(name="inputStr", required=false, defaultValue="Unknown") String inputStr, @RequestParam(name="inputStrPos", required=false, defaultValue="Unknown") String inputStrPos) {
 		BioLemmatizer bioLemmatizer = new BioLemmatizer();
-		String output = bioLemmatizer.getPrecessedData(inputStr, inputStrPos);
+		String output = bioLemmatizer.getPrecessedData(inputStr, inputStrPos, false);
+		lemata.setOutputStr(output);
+		lemata.setInputStr(inputStr);
+		lemata.setInputStrPos(inputStrPos);
+		return lemata;
+	}
+	
+	@RequestMapping("/bio/lemmatizer2")
+	public Lemata getBioLemmatizer2(@RequestParam(name="inputStr", required=false, defaultValue="Unknown") String inputStr, @RequestParam(name="inputStrPos", required=false, defaultValue="Unknown") String inputStrPos) {
+		BioLemmatizer bioLemmatizer = new BioLemmatizer();
+		String output = bioLemmatizer.getPrecessedData(inputStr, inputStrPos, true);
 		lemata.setOutputStr(output);
 		lemata.setInputStr(inputStr);
 		lemata.setInputStrPos(inputStrPos);
