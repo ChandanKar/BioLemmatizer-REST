@@ -17,4 +17,4 @@
   - browse http://localhost:8080/
   - Lemmatizer url 
     - uninteractive: http://localhost:8080/bio/lemmatizer?inputStr=india and http://localhost:8080/bio/lemmatizer?inputStr=india&inputStrPos=""
-    - interactive: http://localhost:8080/bio/lemmatizer2?inputStr=india and http://localhost:8080/bio/lemmatizer2?inputStr=india&inputStrPos=""
+    - interactive: http://localhost:8080/bio/lemmatizer2?inputStr=india or http://localhost:8080/bio/lemmatizer2?inputStr=india&inputStrPos=""
